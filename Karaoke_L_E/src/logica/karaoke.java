@@ -1,8 +1,9 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class karaoke {
+public class karaoke implements Serializable{
 	
 	private ArrayList<Genero> listaGeneros;
 	private Cancion cancionActual;

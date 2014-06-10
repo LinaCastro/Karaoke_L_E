@@ -1,8 +1,9 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Genero {
+public class Genero implements Serializable{
 	
 	private String nombre;
 	private ArrayList<Autor> listaAutores;

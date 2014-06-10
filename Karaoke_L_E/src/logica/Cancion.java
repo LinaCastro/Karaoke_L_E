@@ -1,11 +1,13 @@
 package logica;
 
-public class Cancion {
+import java.io.Serializable;
+
+public class Cancion implements Serializable{
 
 	private String nombre;
 	private int duracion;
 	
-	public Cancion() {
+	public Cancion(){
 
 	}
 
