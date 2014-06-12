@@ -2,7 +2,7 @@ package persistencia;
 
 import java.io.*;
 
-import logica.karaoke;
+import logica.Karaoke;
 
 public class GestionArchivoBinario {
 
@@ -24,13 +24,13 @@ public class GestionArchivoBinario {
 		fileInputStream = new FileInputStream(file);
 		objectInputStream = new ObjectInputStream(fileInputStream);
 		
-		karaoke karaoke  = (karaoke)objectInputStream.readObject();
+		Karaoke karaoke  = (Karaoke)objectInputStream.readObject();
 	}
 	public void  escribir()  throws IOException {
 		file = new File("./files/person");
 		fileOutputStream = new FileOutputStream(file);
 		objectOutputStream = new ObjectOutputStream(fileOutputStream);
-		karaoke karaoke = new karaoke();
+		Karaoke karaoke = new Karaoke();
 		objectOutputStream.writeObject(karaoke);//Guardar el objeto
 		objectOutputStream.close();
 	}

@@ -6,8 +6,11 @@ import java.util.Properties;
 
 import javax.swing.JFrame;
 
+import logica.Karaoke;
+
 public class VentanaPrincipal extends JFrame{
 
+	private Karaoke karaoke;
 	private PanelReproduccion panelReproduccion;
 	private PanelGenero panelGenero;
 	private PanelArtista panelArtista;
@@ -24,8 +27,10 @@ public class VentanaPrincipal extends JFrame{
 		this.setUndecorated(true);
 		this.setFocusable(true);
 		
+		karaoke = new Karaoke();
+		
 		panelReproduccion = new PanelReproduccion();
-		panelCancion = new PanelCancion();
+		//panelCancion = new PanelCancion();
 		panelGenero = new PanelGenero();
 		panelArtista = new PanelArtista();
 		

@@ -3,18 +3,18 @@ package logica;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class karaoke implements Serializable{
+public class Karaoke implements Serializable{
 	
 	private ArrayList<Genero> listaGeneros;
 	private Cancion cancionActual;
 	
-	public karaoke(ArrayList<Genero> listaGeneros, Cancion cancionActual) {
+	public Karaoke(ArrayList<Genero> listaGeneros, Cancion cancionActual) {
 		super();
 		this.listaGeneros = listaGeneros;
 		this.cancionActual = cancionActual;
 	}
 
-	public karaoke() {
+	public Karaoke() {
 	}
 	
 	public ArrayList<Genero> getListaGeneros() {

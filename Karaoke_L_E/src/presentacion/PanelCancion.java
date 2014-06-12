@@ -2,9 +2,13 @@ package presentacion;
 
 import javax.swing.JPanel;
 
+import logica.Cancion;
+
 public class PanelCancion extends JPanel{
 
-	public PanelCancion() {
-		// TODO Auto-generated constructor stub
+	private Cancion cancion;
+	
+	public PanelCancion(Cancion cancionP) {
+		cancion = cancionP;
 	}
 }
