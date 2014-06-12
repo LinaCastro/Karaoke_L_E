@@ -19,6 +19,10 @@ public class GestionArchivoBinario {
 		
 	}
 	
+	public void guardarArchivoKaraoke(Karaoke karaoke){
+		
+	}
+	
 	public void leer() throws IOException, ClassNotFoundException {
 		file = new File("./files/person");
 		fileInputStream = new FileInputStream(file);
