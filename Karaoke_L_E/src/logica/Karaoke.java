@@ -12,9 +12,11 @@ public class Karaoke implements Serializable{
 		super();
 		this.listaGeneros = listaGeneros;
 		this.cancionActual = cancionActual;
+		listaGeneros = new ArrayList<Genero>();
 	}
 
 	public Karaoke() {
+		listaGeneros = new ArrayList<Genero>();
 	}
 	
 	public ArrayList<Genero> getListaGeneros() {
@@ -30,6 +32,9 @@ public class Karaoke implements Serializable{
 		this.cancionActual = cancionActual;
 	}
 	
+	public void agregarGenero(String nombre){
+		Genero genero = new Genero(nombre);
+		listaGeneros.add(genero);
+	}
 	
-
 }

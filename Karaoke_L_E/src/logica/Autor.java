@@ -9,9 +9,16 @@ public class Autor implements Serializable{
 	private ArrayList<Cancion> listaCanciones;
 	
 	public Autor() {
-
+		listaCanciones = new ArrayList<Cancion>();
 	}
-	
+		
+	public Autor(String nombre) {
+		super();
+		this.nombre = nombre;
+		this.listaCanciones = listaCanciones;
+		listaCanciones = new ArrayList<Cancion>();
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -25,4 +32,13 @@ public class Autor implements Serializable{
 		this.listaCanciones = listaCanciones;
 	}
 	
+	public void agregarCancion(String nombre, int duracion){
+		Cancion cancion = new Cancion(nombre,duracion);
+		listaCanciones.add(cancion);
+	}
+	
+	@Override
+	public String toString() {
+		return nombre;
+	}
 }

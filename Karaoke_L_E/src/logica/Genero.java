@@ -9,15 +9,16 @@ public class Genero implements Serializable{
 	private ArrayList<Autor> listaAutores;
 	private String imagenGenero;
 	
-	public Genero(String nombre, ArrayList<Autor> listaAutores,
-			String imagenGenero) {
+	public Genero(String nombre) {
 		super();
 		this.nombre = nombre;
 		this.listaAutores = listaAutores;
 		this.imagenGenero = imagenGenero;
+		listaAutores = new ArrayList<Autor>();
+
 	}
-	 public Genero() {
-		// TODO Auto-generated constructor stub
+	public Genero() {
+		listaAutores = new ArrayList<Autor>();
 	}
 	public String getNombre() {
 		return nombre;
@@ -38,5 +39,12 @@ public class Genero implements Serializable{
 		this.imagenGenero = imagenGenero;
 	}
 	
-	 
+	public void agreagrAutor(String nombre){
+		Autor autor = new Autor(nombre);
+		listaAutores.add(autor);
+	}
+	@Override
+	public String toString() {
+		return nombre;
+	}
 }
