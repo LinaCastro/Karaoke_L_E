@@ -11,7 +11,7 @@ import logica.Karaoke;
 public class VentanaPrincipal extends JFrame{
 
 	private Karaoke karaoke;
-	private PanelReproduccion panelReproduccion;
+	private VentanaReproduccion ventanaReproduccion;
 	private PanelGenero panelGenero;
 	private PanelArtista panelArtista;
 	private PanelCancion panelCancion;
@@ -29,15 +29,19 @@ public class VentanaPrincipal extends JFrame{
 		
 		karaoke = new Karaoke();
 		
-		panelReproduccion = new PanelReproduccion();
+		ventanaReproduccion = new VentanaReproduccion();
 		//panelCancion = new PanelCancion();
 		panelGenero = new PanelGenero();
 		panelArtista = new PanelArtista();
 		
-		this.add(panelReproduccion);
-		this.add(panelCancion);
-		this.add(panelGenero);
-		this.add(panelArtista);
+		this.add(panelCancion, BorderLayout.EAST);
+		this.add(panelGenero, BorderLayout.WEST);
+		this.add(panelArtista, BorderLayout.CENTER);
 
+	}
+	public static void main(String[] args) {
+		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+		ventanaPrincipal.setVisible(true);
+		
 	}
 }
