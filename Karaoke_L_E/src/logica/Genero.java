@@ -15,10 +15,6 @@ public class Genero implements Serializable{
 		this.listaAutores = listaAutores;
 		this.imagenGenero = imagenGenero;
 		listaAutores = new ArrayList<Autor>();
-
-	}
-	public Genero() {
-		listaAutores = new ArrayList<Autor>();
 	}
 	public String getNombre() {
 		return nombre;
@@ -39,7 +35,7 @@ public class Genero implements Serializable{
 		this.imagenGenero = imagenGenero;
 	}
 	
-	public void agreagrAutor(String nombre){
+	public void agregarAutor(String nombre){
 		Autor autor = new Autor(nombre);
 		listaAutores.add(autor);
 	}

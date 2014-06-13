@@ -13,8 +13,21 @@ public class Karaoke implements Serializable{
 		this.listaGeneros = listaGeneros;
 		this.cancionActual = cancionActual;
 		listaGeneros = new ArrayList<Genero>();
+		listaGeneros.add(new Genero("Vallenato"));
+		listaGeneros.add(new Genero("Rock"));
+		listaGeneros.add(new Genero("Pop"));
+		listaGeneros.add(new Genero("Reggaeton"));
 	}
 
+	public void initAutores(){
+		listaGeneros.get(0).agregarAutor("Silvestre");
+		listaGeneros.get(0).agregarAutor("Pipe Pelaez");
+		listaGeneros.get(0).agregarAutor("Diomedes Diaz");
+		listaGeneros.get(0).getListaAutores().get(0).agregarCancion("UN AMOR VERDADERO", 313);
+
+
+	}
+	
 	public Karaoke() {
 		listaGeneros = new ArrayList<Genero>();
 	}
