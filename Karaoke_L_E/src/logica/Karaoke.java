@@ -44,6 +44,28 @@ public class Karaoke implements Serializable{
 		Artista artista = new Artista(nombre, genero);
 		listaArtista.add(artista);
 	}
+	public ArrayList<Artista> listaArtistasPorGenero(Genero genero) {
+		ArrayList<Artista> listaartistasPorGenero = new ArrayList<>();
+		for (Artista artista : this.listaArtista) {
+			if (artista.getGenero().equals(genero)) {
+				listaartistasPorGenero.add(artista);
+			}
+		}
+		return listaartistasPorGenero;
+	}
 
+	public ArrayList<Cancion> listaCancionesPorArtista(String artistaP) {
+		ArrayList<Cancion> listaCancionPorArtista = new ArrayList<>();
+		for (Artista artista : this.listaArtista) {
+			if (artista.getNombre().equals(artistaP)) {
+				System.out.println(artista.getNombre());
+				for (Cancion cancion : artista.getListaCanciones()) {
+					System.err.println(cancion.getNombre());
+					listaCancionPorArtista.add(cancion);
+				}
+			}
+		}
+		return listaCancionPorArtista;
+	}
 
 }
