@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
+import logica.Genero;
+
 public class GestionEventos implements ActionListener{
 
 	private VentanaPrincipal ventanaPrincipal;
@@ -25,6 +27,10 @@ public class GestionEventos implements ActionListener{
 			ventanaPrincipal.manejoVentanaReproduccion('a');
 		}else if (event.getActionCommand().equals(VentanaReproduccion.COMANDO_CERRAR_REPRODUCCION)) {
 			ventanaPrincipal.manejoVentanaReproduccion('c');
+		}else if (event.getActionCommand().equals(PanelGuardarNuevoArchivo.COMANDO_GUARDAR_CANCION_REPRODUCCION)) {
+			ventanaPrincipal.guardarCancion();
+		}else if (event.getActionCommand().equals(PanelGuardarNuevoArchivo.COMANDO_BOX_NUEVO_GENERO)) {
+			ventanaPrincipal.actualizaBoxAutores((Genero) ((JComboBox<Genero>)event.getSource()).getSelectedItem());;
 		}
 		
 	}

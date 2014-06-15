@@ -3,22 +3,26 @@ package logica;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import persistencia.GestionArchivoPlano;
+
+
 public class Karaoke implements Serializable{
 	
-	private ArrayList<Autor> listaAutor;
+	private ArrayList<Artista> listaArtista;
 	private Cancion cancionActual;
 	
 	public Karaoke() {
 		super();
-		listaAutor = new ArrayList<Autor>();
-		listaAutor.add(new Autor("Pipe Pelaes", Genero.VALLENATO));
-		listaAutor.add(new Autor("Mago de Oz", Genero.ROCK));
-		listaAutor.add(new Autor("Alkilados", Genero.POP));
-		listaAutor.add(new Autor("Nicky Jam", Genero.REGGAETON));
-		listaAutor.get(0).agregarCancion("Cuando quieras quiero", 190, "./files/letraCanciones/letra.txt");
-		listaAutor.get(1).agregarCancion("Mujer Amante", 190, "");
-		listaAutor.get(2).agregarCancion("Mona Lisa", 190, "");
-		listaAutor.get(3).agregarCancion("Voy a Beber", 190, "");
+		listaArtista = new ArrayList<Artista>();
+		listaArtista.add(new Artista("Pipe Pelaes", Genero.VALLENATO));
+		listaArtista.add(new Artista("Mago de Oz", Genero.ROCK));
+		listaArtista.add(new Artista("Alkilados", Genero.POP));
+		listaArtista.add(new Artista("Nicky Jam", Genero.REGGAETON));
+		listaArtista.get(0).agregarCancion("Cuando quieras quiero", 190, "./files/letraCanciones/letra.txt");
+		listaArtista.get(1).agregarCancion("Mujer Amante", 190, "");
+		listaArtista.get(2).agregarCancion("Mona Lisa", 190, "");
+		listaArtista.get(3).agregarCancion("Voy a Beber", 190, "");
+		listaArtista.add(new Artista("Silvestre Dangon", Genero.VALLENATO));
 	}
 
 	public Cancion getCancionActual() {
@@ -28,17 +32,18 @@ public class Karaoke implements Serializable{
 		this.cancionActual = cancionActual;
 	}
 	
-	public ArrayList<Autor> getListaAutor() {
-		return listaAutor;
+	public ArrayList<Artista> getListaArtista() {
+		return listaArtista;
 	}
 
-	public void setListaAutor(ArrayList<Autor> listaAutor) {
-		this.listaAutor = listaAutor;
+	public void setListaArtista(ArrayList<Artista> listaArtista) {
+		this.listaArtista = listaArtista;
 	}
 
-	public void agregarAutor(String nombre, Genero genero){
-		Autor autor = new Autor(nombre, genero);
-		listaAutor.add(autor);
+	public void agregarArtista(String nombre, Genero genero){
+		Artista artista = new Artista(nombre, genero);
+		listaArtista.add(artista);
 	}
-	
+
+
 }

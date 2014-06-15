@@ -1,19 +1,18 @@
 package logica;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Autor implements Serializable{
+import persistencia.GestionArchivoPlano;
+
+public class Artista implements Serializable{
 
 	private String nombre;
 	private Genero genero;
 	private ArrayList<Cancion> listaCanciones;
 	
-	public Autor() {
-		listaCanciones = new ArrayList<Cancion>();
-	}
-		
-	public Autor(String nombre, Genero genero) {
+	public Artista(String nombre, Genero genero) {
 		super();
 		this.nombre = nombre;
 		this.genero = genero;
@@ -31,9 +30,25 @@ public class Autor implements Serializable{
 	public void setListaCanciones(ArrayList<Cancion> listaCanciones) {
 		this.listaCanciones = listaCanciones;
 	}
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
+
 	public void agregarCancion(String nombre, int duracionSegundos, String rutaLetra){
 		Cancion cancion = new Cancion(nombre,duracionSegundos,rutaLetra);
 		listaCanciones.add(cancion);
+	}
+	public void guardarNuevaLetraCancion(String letra, Cancion nuevaCancion, String ruta) {
+		try {
+			GestionArchivoPlano.crearArchivoLetra(letra, ruta + ".txt");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		listaCanciones.add(nuevaCancion);
 	}
 	@Override
 	public String toString() {
