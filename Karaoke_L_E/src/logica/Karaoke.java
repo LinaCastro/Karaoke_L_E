@@ -5,39 +5,22 @@ import java.util.ArrayList;
 
 public class Karaoke implements Serializable{
 	
-	private ArrayList<Genero> listaGeneros;
+	private ArrayList<Autor> listaAutor;
 	private Cancion cancionActual;
 	
-	public Karaoke(ArrayList<Genero> listaGeneros, Cancion cancionActual) {
-		super();
-		this.listaGeneros = listaGeneros;
-		this.cancionActual = cancionActual;
-		listaGeneros = new ArrayList<Genero>();
-		listaGeneros.add(new Genero("Vallenato"));
-		listaGeneros.add(new Genero("Rock"));
-		listaGeneros.add(new Genero("Pop"));
-		listaGeneros.add(new Genero("Reggaeton"));
-	}
-
-	public void initAutores(){
-		listaGeneros.get(0).agregarAutor("Silvestre");
-		listaGeneros.get(0).agregarAutor("Pipe Pelaez");
-		listaGeneros.get(0).agregarAutor("Diomedes Diaz");
-		listaGeneros.get(0).getListaAutores().get(0).agregarCancion("UN AMOR VERDADERO", 313);
-
-
-	}
-	
 	public Karaoke() {
-		listaGeneros = new ArrayList<Genero>();
+		super();
+		listaAutor = new ArrayList<Autor>();
+		listaAutor.add(new Autor("Pipe Pelaes", Genero.VALLENATO));
+		listaAutor.add(new Autor("Mago de Oz", Genero.ROCK));
+		listaAutor.add(new Autor("Alkilados", Genero.POP));
+		listaAutor.add(new Autor("Nicky Jam", Genero.REGGAETON));
+		listaAutor.get(0).agregarCancion("Cuando quieras quiero", 190, "./files/letraCanciones/letra.txt");
+		listaAutor.get(1).agregarCancion("Mujer Amante", 190, "");
+		listaAutor.get(2).agregarCancion("Mona Lisa", 190, "");
+		listaAutor.get(3).agregarCancion("Voy a Beber", 190, "");
 	}
-	
-	public ArrayList<Genero> getListaGeneros() {
-		return listaGeneros;
-	}
-	public void setListaGeneros(ArrayList<Genero> listaGeneros) {
-		this.listaGeneros = listaGeneros;
-	}
+
 	public Cancion getCancionActual() {
 		return cancionActual;
 	}
@@ -45,9 +28,17 @@ public class Karaoke implements Serializable{
 		this.cancionActual = cancionActual;
 	}
 	
-	public void agregarGenero(String nombre){
-		Genero genero = new Genero(nombre);
-		listaGeneros.add(genero);
+	public ArrayList<Autor> getListaAutor() {
+		return listaAutor;
+	}
+
+	public void setListaAutor(ArrayList<Autor> listaAutor) {
+		this.listaAutor = listaAutor;
+	}
+
+	public void agregarAutor(String nombre, Genero genero){
+		Autor autor = new Autor(nombre, genero);
+		listaAutor.add(autor);
 	}
 	
 }

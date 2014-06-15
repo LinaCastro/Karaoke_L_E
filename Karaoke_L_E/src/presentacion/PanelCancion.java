@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import logica.Cancion;
-import logica.Genero;
 
 public class PanelCancion extends JPanel{
 
