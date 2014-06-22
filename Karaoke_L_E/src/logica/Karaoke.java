@@ -1,28 +1,35 @@
 package logica;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import persistencia.GestionArchivoBinario;
 import persistencia.GestionArchivoPlano;
 
 
 public class Karaoke implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Artista> listaArtista;
 	private Cancion cancionActual;
 	
+	
 	public Karaoke() {
 		super();
+		cancionActual =  new Cancion();
 		listaArtista = new ArrayList<Artista>();
 		listaArtista.add(new Artista("Pipe Pelaes", Genero.VALLENATO));
 		listaArtista.add(new Artista("Mago de Oz", Genero.ROCK));
 		listaArtista.add(new Artista("Alkilados", Genero.POP));
 		listaArtista.add(new Artista("Nicky Jam", Genero.REGGAETON));
-		listaArtista.get(0).agregarCancion("Cuando quieras quiero", 190, "./files/letraCanciones/letra.txt");
-		listaArtista.get(1).agregarCancion("Mujer Amante", 190, "");
-		listaArtista.get(2).agregarCancion("Mona Lisa", 190, "");
-		listaArtista.get(3).agregarCancion("Voy a Beber", 190, "");
-		listaArtista.add(new Artista("Silvestre Dangon", Genero.VALLENATO));
+		listaArtista.get(0).agregarCancion("Cuando quieras quiero", 190, "./files/letraCanciones/Cuando quieras quiero.kle");
+		listaArtista.get(1).agregarCancion("Mujer Amante", 190, "./files/letraCanciones/Mujer Amante.kle");
+		listaArtista.get(2).agregarCancion("Mona Lisa", 190, "./files/letraCanciones/Mona Lisa.kle");
+		listaArtista.get(3).agregarCancion("Voy a Beber", 190, "./files/letraCanciones/Voy a Beber.kle");
 	}
 
 	public Cancion getCancionActual() {
@@ -44,8 +51,35 @@ public class Karaoke implements Serializable{
 		Artista artista = new Artista(nombre, genero);
 		listaArtista.add(artista);
 	}
+	public void letraCancionAReproducir(String nombreArtista, int posicionCancion){
+		cancionActual = new Cancion();
+		String letra = "";
+		for (Artista artistaArray : this.listaArtista) {
+			if (artistaArray.getNombre().equals(nombreArtista)) {
+				letra = (String)GestionArchivoPlano.leerArchivoLetra(artistaArray.getListaCanciones().get(posicionCancion).getRutaLetra());
+				cancionActual.guardarLetra(letra);
+				System.out.println(letra);
+			}
+		}
+		
+	}
+	public void agregarCancion(String nombreArtista, Cancion cancionParaGuardar){
+		for (Artista artistaArray : this.listaArtista) {
+			if (artistaArray.getNombre().equals(nombreArtista)) {
+				artistaArray.agregarCancion(cancionParaGuardar.getNombre(), cancionParaGuardar.getDuracion(), cancionParaGuardar.getRutaLetra()+".kle");
+			}
+		}
+	}
+	public void guardarLetraCancion(String letra, String ruta){
+		try {
+			GestionArchivoPlano.crearArchivoLetra(letra, ruta+".kle");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public ArrayList<Artista> listaArtistasPorGenero(Genero genero) {
-		ArrayList<Artista> listaartistasPorGenero = new ArrayList<>();
+		ArrayList<Artista> listaartistasPorGenero = new ArrayList<Artista>();
 		for (Artista artista : this.listaArtista) {
 			if (artista.getGenero().equals(genero)) {
 				listaartistasPorGenero.add(artista);
@@ -55,17 +89,17 @@ public class Karaoke implements Serializable{
 	}
 
 	public ArrayList<Cancion> listaCancionesPorArtista(String artistaP) {
-		ArrayList<Cancion> listaCancionPorArtista = new ArrayList<>();
+		ArrayList<Cancion> listaCancionPorArtista = new ArrayList<Cancion>();
 		for (Artista artista : this.listaArtista) {
 			if (artista.getNombre().equals(artistaP)) {
-				System.out.println(artista.getNombre());
 				for (Cancion cancion : artista.getListaCanciones()) {
-					System.err.println(cancion.getNombre());
 					listaCancionPorArtista.add(cancion);
 				}
 			}
 		}
 		return listaCancionPorArtista;
 	}
-
+	public void guardarKaraoke(String rutaKaraoke ){
+		GestionArchivoBinario.crearArchivoKaraoke(this, rutaKaraoke);
+	}
 }

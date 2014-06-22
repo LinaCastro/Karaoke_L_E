@@ -12,7 +12,7 @@ public class GestionArchivoBinario {
 	public GestionArchivoBinario() {
 		
 	}
-	public void crearArchivoKaraoke(Karaoke karaoke, String ruta){
+	public static void crearArchivoKaraoke(Karaoke karaoke, String ruta){
 		File archivo = new File(ruta);
 		FileOutputStream fileOutputStream = null;
 		ObjectOutputStream objectOutputStream = null ;
@@ -36,7 +36,7 @@ public class GestionArchivoBinario {
 			e.printStackTrace();
 		}
 	}
-	public Karaoke leerArchivoKaraoke(String ruta) {
+	public static Karaoke leerArchivoKaraoke(String ruta) {
 		File archivo = new File(ruta);
 		FileInputStream fileInputStream = null;
 		ObjectInputStream objectInputStream = null;
@@ -52,8 +52,11 @@ public class GestionArchivoBinario {
 		}
 		try {
 			return (Karaoke) objectInputStream.readObject();
-		} catch (ClassNotFoundException | IOException e) {
+		} catch (IOException e) {
 			System.out.println("Clase no");
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			try {
@@ -82,8 +85,11 @@ public class GestionArchivoBinario {
 		ObjectInputStream	objectInputStream = new ObjectInputStream(fileInputStream);
 		try {
 			return (Cancion) objectInputStream.readObject();
-		} catch (ClassNotFoundException | IOException e) {
+		} catch (IOException e) {
 			System.out.println("Clase no");
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

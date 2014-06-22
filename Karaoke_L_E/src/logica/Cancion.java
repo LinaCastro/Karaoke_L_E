@@ -8,7 +8,7 @@ public class Cancion implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8941806216396156233L;
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private int duracion;
 	private String rutaLetra;

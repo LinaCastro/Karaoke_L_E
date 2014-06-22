@@ -16,25 +16,35 @@ public class GestionArchivoPlano {
 		fileWriter.close();
 	}
 	
-	public static ArrayList<String> leerArchivoLetra(String ruta) throws IOException {
+	public static String leerArchivoLetra(String ruta) {
 		File archivo = new File(ruta);
 		FileReader fileReader = null;
 		
-		ArrayList<String> letra = new ArrayList<String>();
+		String letra = "";
 
-		fileReader = new FileReader(archivo);
+		try {
+			fileReader = new FileReader(archivo);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String linea = null;
 		try {
 			while ((linea = bufferedReader.readLine()) != null) {
-				letra.add(linea);
+				letra += linea;
 			}
 			return letra;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-			fileReader.close();
+			try {
+				fileReader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		return null;
 	}
 	public GestionArchivoPlano() {

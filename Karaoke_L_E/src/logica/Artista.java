@@ -8,6 +8,10 @@ import persistencia.GestionArchivoPlano;
 
 public class Artista implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private Genero genero;
 	private ArrayList<Cancion> listaCanciones;
@@ -42,6 +46,7 @@ public class Artista implements Serializable{
 		Cancion cancion = new Cancion(nombre,duracionSegundos,rutaLetra);
 		listaCanciones.add(cancion);
 	}
+	
 	public void guardarNuevaLetraCancion(String letra, Cancion nuevaCancion, String ruta) {
 		try {
 			GestionArchivoPlano.crearArchivoLetra(letra, ruta + ".txt");
