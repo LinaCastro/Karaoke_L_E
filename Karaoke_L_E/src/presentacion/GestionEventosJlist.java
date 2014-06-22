@@ -20,10 +20,10 @@ public class GestionEventosJlist implements ListSelectionListener{
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		if (e.getSource().equals(ventanaPrincipal.getPanelGenero().getListaGenero())) {
-			ventanaPrincipal.actualizaJlistArtista(((JList<Genero>) e.getSource()).getSelectedValue());
+			ventanaPrincipal.actualizaJlistArtista((Genero) ((JList) e.getSource()).getSelectedValue());
 		}
 		if (e.getSource().equals(ventanaPrincipal.getPanelArtista().getListaArtista())) {
-			ventanaPrincipal.actualizaJlistCancion(((JList<String>) e.getSource()).getSelectedValue());
+			ventanaPrincipal.actualizaJlistCancion((String) ((JList) e.getSource()).getSelectedValue());
 		}
 	}
 

@@ -14,7 +14,6 @@ import logica.Genero;
 public class GestionEventos implements ActionListener{
 
 	private VentanaPrincipal ventanaPrincipal;
-
 	
 	public GestionEventos(VentanaPrincipal principal) {
 		super();
@@ -27,10 +26,14 @@ public class GestionEventos implements ActionListener{
 			ventanaPrincipal.manejoVentanaReproduccion('a');
 		}else if (event.getActionCommand().equals(VentanaReproduccion.COMANDO_CERRAR_REPRODUCCION)) {
 			ventanaPrincipal.manejoVentanaReproduccion('c');
-		}else if (event.getActionCommand().equals(PanelGuardarNuevoArchivo.COMANDO_GUARDAR_CANCION_REPRODUCCION)) {
+		}else if (event.getActionCommand().equals(PanelGuardarNuevoArchivo.COMANDO_GUARDAR_CANCION)) {
 			ventanaPrincipal.guardarCancion();
-		}else if (event.getActionCommand().equals(PanelGuardarNuevoArchivo.COMANDO_BOX_NUEVO_GENERO)) {
-			ventanaPrincipal.actualizaBoxAutores((Genero) ((JComboBox<Genero>)event.getSource()).getSelectedItem());;
+		}else if (event.getActionCommand().equals(PanelGuardarNuevoArchivo.COMANDO_BOX_GENERO)) {
+			ventanaPrincipal.actualizaBoxAutores((Genero) ((JComboBox)event.getSource()).getSelectedItem());;
+		}else if (event.getActionCommand().equals(PanelGuardarNuevoArchivo.COMANDO_NUEVO_ARTIST)) {
+			ventanaPrincipal.crearArtistaOCancion('a'); 
+		}else if (event.getActionCommand().equals(PanelGuardarNuevoArchivo.COMANDO_GUARDAR_CANCION)) {
+			ventanaPrincipal.crearArtistaOCancion('c'); 
 		}
 		
 	}

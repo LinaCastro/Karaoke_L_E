@@ -17,14 +17,14 @@ import logica.Cancion;
 public class PanelArtista extends JPanel{
 	
 	private DefaultListModel listModelArtista;
-	private JList<Artista> listaArtista;
+	private JList listaArtista;
 
 	public PanelArtista(GestionEventosJlist eventosJlist) {
 		this.setLayout(new BorderLayout());
 		this.setPreferredSize(new Dimension(200, 500));
 		this.setBorder(new TitledBorder(BorderFactory.createTitledBorder("ARTISTAS")));
-		listModelArtista = new DefaultListModel<>();
-		listaArtista = new JList<>(listModelArtista);
+		listModelArtista = new DefaultListModel();
+		listaArtista = new JList(listModelArtista);
 		listaArtista.addListSelectionListener(eventosJlist);
 		this.add(listaArtista, BorderLayout.CENTER);
 	}
@@ -40,10 +40,10 @@ public class PanelArtista extends JPanel{
 	public void setListModelArtista(DefaultListModel listModelArtista) {
 		this.listModelArtista = listModelArtista;
 	}
-	public JList<Artista> getListaArtista() {
+	public JList getListaArtista() {
 		return listaArtista;
 	}
-	public void setListaArtista(JList<Artista> listaArtista) {
+	public void setListaArtista(JList listaArtista) {
 		this.listaArtista = listaArtista;
 	}
 	
