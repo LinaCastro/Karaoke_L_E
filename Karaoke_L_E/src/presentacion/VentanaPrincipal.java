@@ -1,9 +1,17 @@
 package presentacion;
 
+import img.ImageLoader;
+
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
 import java.util.Properties;
 
+import javax.imageio.ImageIO;
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -42,7 +50,7 @@ public class VentanaPrincipal extends JFrame{
 		this.setSize(600, 400);
 		this.setLayout(new BorderLayout());
 		this.setLocationRelativeTo(null);
-		this.getContentPane().setBackground(Color.decode("#51C1F5"));
+		this.getContentPane().setBackground(Color.decode("#DB7E04"));
 		this.setFocusable(true);
 		this.setIconImage(new ImageIcon(getClass().getResource(
 				"/img/logo.png")).getImage());
@@ -57,12 +65,17 @@ public class VentanaPrincipal extends JFrame{
 		ventanaReproduccion.setVisible(false);
 		
 		jTabbedPane = new JTabbedPane();	
+		jTabbedPane.setBackground(Color.decode("#FF9100"));	
 		
 		panelCancion = new PanelCancion();
+		panelCancion.setBackground(Color.decode("#DB7E04"));
 		panelGenero = new PanelGenero(gestionEventosJlist);
+		panelGenero.setBackground(Color.decode("#DB7E04"));
 		panelArtista = new PanelArtista(gestionEventosJlist);
+		panelArtista.setBackground(Color.decode("#DB7E04"));
 
-		botonAbrirReproduccion = new JButton("REPRODUCIR");
+		botonAbrirReproduccion = this.imagenBoton("boton.jpg", new Dimension(this.getWidth(), 30));
+		botonAbrirReproduccion.setText("REPRODUCIR");
 		botonAbrirReproduccion.setActionCommand(COMANDO_ABRIR_REPRODUCCION);
 		botonAbrirReproduccion.addActionListener(gestionEventos);
 		
@@ -93,7 +106,8 @@ public class VentanaPrincipal extends JFrame{
 			String nuevoArtista = JOptionPane.showInputDialog(null, "Ingrese El Nombre Del Nuevo Artista");
 			if (nuevoArtista != null && !nuevoArtista.isEmpty()) {
 				karaoke.agregarArtista(nuevoArtista, 
-						(Genero) panelGuardarNuevoArchivo.getBoxGenero().getSelectedItem());;
+						(Genero) panelGuardarNuevoArchivo.getBoxGenero().getSelectedItem(),
+						"");
 			}else 
 				JOptionPane.showMessageDialog(null, "Error al Ingresar el Nombre");
 			break;
@@ -108,11 +122,6 @@ public class VentanaPrincipal extends JFrame{
 		switch (abrirCerrar) {
 		case 'a':
 			ventanaReproduccion.setVisible(true);
-//			System.out.println(panelArtista.getListaArtista().getSelectedIndex());
-//			System.out.println(panelCancion.getListaCancion().getSelectedIndex());
-//			for (String stringValue : (karaoke.getListaArtista().get(panelArtista.getListaArtista().getSelectedIndex()).getListaCanciones().get(panelCancion.getListaCancion().getSelectedIndex()-1).getLetraCancion())) {
-//				System.out.print(stringValue + "    ok++");
-//			}
 			karaoke.letraCancionAReproducir((String) panelArtista.getListaArtista().getSelectedValue(), panelCancion.getListaCancion().getSelectedIndex());
 			ventanaReproduccion.asignarLetraCancionJpanel(karaoke.getCancionActual());
 			ventanaReproduccion.reproducir();
@@ -141,6 +150,18 @@ public class VentanaPrincipal extends JFrame{
 //			panelGuardarNuevoArchivo.getTxtLetraCancion().getText());
 		}
 	}
+	public JButton imagenBoton(String rutaImg, Dimension dimension){
+	    JButton botonBase = new JButton();  
+		try {
+	          InputStream imgStream = ImageLoader.class.getResourceAsStream(rutaImg);
+	          BufferedImage temp = ImageIO.read( imgStream );
+	          botonBase.setIcon( new ImageIcon( temp.getScaledInstance(dimension.width+10, dimension.height+10, 0) ) );
+	          botonBase.setPreferredSize(new Dimension(dimension.width,dimension.height));
+	      } catch (Exception e) {
+	          e.printStackTrace();
+	      }
+		return botonBase;
+		}
 	protected ImageIcon createImageIcon(String path, String description) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

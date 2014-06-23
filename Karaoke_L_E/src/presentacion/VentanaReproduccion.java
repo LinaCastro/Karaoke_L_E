@@ -20,6 +20,7 @@ public class VentanaReproduccion extends JWindow{
 	private HiloVentanaReproduccion hiloVentanaReproduccion;
 	private JButton botonCerrar;
 	private JPanel panelLabels;
+	private JLabel jLabelFondo;
 	private JLabel[] listaLabelsCaracter;
 	private int posicionCaracter;
 	private int posicionCaracterLetra;
@@ -63,14 +64,14 @@ public class VentanaReproduccion extends JWindow{
 			posicionCaracterLetra++;
 			repaint();
 		}
+
+		this.resetLabelsColor();
 		this.setVisible(false);
 		this.setVisible(true);
 	}
 	public void terminoTablero(){
 		if (listaLabelsCaracter[listaLabelsCaracter.length-1].getForeground().equals(Color.red)) {
-			for (int i = 0; i < listaLabelsCaracter.length; i++) {
-				listaLabelsCaracter[i].setForeground(Color.black);
-			}
+			this.resetLabelsColor();
 			repaint();
 			posicionCaracter = 0;
 			for (int i = 0; posicionCaracterLetra < cancionReproductor.getLetraCancion().size() && listaLabelsCaracter.length>i; i++) {
@@ -78,6 +79,11 @@ public class VentanaReproduccion extends JWindow{
 				posicionCaracterLetra++;
 				repaint();
 			}
+		}
+	}
+	public void resetLabelsColor(){
+		for (int i = 0; i < listaLabelsCaracter.length; i++) {
+			listaLabelsCaracter[i].setForeground(Color.black);
 		}
 	}
 	public void aumentarposicionCaracter(){

@@ -14,12 +14,14 @@ public class Artista implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private Genero genero;
+	private String rutaImagen;
 	private ArrayList<Cancion> listaCanciones;
 	
-	public Artista(String nombre, Genero genero) {
+	public Artista(String nombre, Genero genero, String rutaImagen) {
 		super();
 		this.nombre = nombre;
 		this.genero = genero;
+		this.rutaImagen = rutaImagen;
 		listaCanciones = new ArrayList<Cancion>();
 	}
 	public String getNombre() {
@@ -42,6 +44,12 @@ public class Artista implements Serializable{
 		this.genero = genero;
 	}
 
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
+	}
 	public void agregarCancion(String nombre, int duracionSegundos, String rutaLetra){
 		Cancion cancion = new Cancion(nombre,duracionSegundos,rutaLetra);
 		listaCanciones.add(cancion);

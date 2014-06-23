@@ -22,14 +22,15 @@ public class Karaoke implements Serializable{
 		super();
 		cancionActual =  new Cancion();
 		listaArtista = new ArrayList<Artista>();
-		listaArtista.add(new Artista("Pipe Pelaes", Genero.VALLENATO));
-		listaArtista.add(new Artista("Mago de Oz", Genero.ROCK));
-		listaArtista.add(new Artista("Alkilados", Genero.POP));
-		listaArtista.add(new Artista("Nicky Jam", Genero.REGGAETON));
+		listaArtista.add(new Artista("Pipe Pelaez", Genero.VALLENATO,"/img/Pipe_Pelaez.png"));
+		listaArtista.add(new Artista("Mago de Oz", Genero.ROCK,"/img/Mago_De_Oz.png"));
+		listaArtista.add(new Artista("Alkilados", Genero.POP,"/img/alkilados.png"));
+		listaArtista.add(new Artista("Nicky Jam", Genero.REGGAETON,"/img/nicky_jam.png"));
 		listaArtista.get(0).agregarCancion("Cuando quieras quiero", 190, "./files/letraCanciones/Cuando quieras quiero.kle");
 		listaArtista.get(1).agregarCancion("Mujer Amante", 190, "./files/letraCanciones/Mujer Amante.kle");
 		listaArtista.get(2).agregarCancion("Mona Lisa", 190, "./files/letraCanciones/Mona Lisa.kle");
 		listaArtista.get(3).agregarCancion("Voy a Beber", 190, "./files/letraCanciones/Voy a Beber.kle");
+//		this.guardarKaraoke("./files/objeto/karaoke.kle");
 	}
 
 	public Cancion getCancionActual() {
@@ -47,8 +48,8 @@ public class Karaoke implements Serializable{
 		this.listaArtista = listaArtista;
 	}
 
-	public void agregarArtista(String nombre, Genero genero){
-		Artista artista = new Artista(nombre, genero);
+	public void agregarArtista(String nombre, Genero genero, String rutaImagen){
+		Artista artista = new Artista(nombre, genero, rutaImagen);
 		listaArtista.add(artista);
 	}
 	public void letraCancionAReproducir(String nombreArtista, int posicionCancion){

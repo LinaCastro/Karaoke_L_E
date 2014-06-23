@@ -21,6 +21,11 @@ public class PanelGuardarNuevoArchivo extends JPanel{
 	private JButton btnGuardar;
 	private JButton btnNuevoArtista;
 	
+	private JLabel lbArtistaNombre;
+	private JTextField txtArtistaNombre;
+	private JLabel lbArtistaImage;
+	private JButton btnArtistaImage;
+	
 	public PanelGuardarNuevoArchivo(GestionEventos gestionEventos) {
 		setLayout(new BorderLayout());
 		setBackground(Color.WHITE);
@@ -62,11 +67,17 @@ public class PanelGuardarNuevoArchivo extends JPanel{
 		panelWest.add(btnNuevoArtista);
 		panelWest.add(txtNombreCancion);
 		panelWest.add(txtDuracionCancion);
+		for (Component component : panelWest.getComponents()) {
+			component.setBackground(Color.decode("#DB7E04"));
+		}
+
 		
 		add(boxGenero, BorderLayout.NORTH);
 		add(panelWest, BorderLayout.WEST);
 		add(txtLetraCancion, BorderLayout.CENTER);
 		add(btnGuardar, BorderLayout.SOUTH);
+		
+		
 	}
 	public void actualizaComboBoxArtista(ArrayList<Artista> nuevaListaArtista){
 		btnGuardar.setEnabled(true);
@@ -78,6 +89,9 @@ public class PanelGuardarNuevoArchivo extends JPanel{
 		boxArtistaNombre.removeAllItems();
 		for (Artista artistaNombre : nuevaListaArtista) {
 			boxArtistaNombre.addItem(artistaNombre.getNombre());
+		}
+		for (Component component : this.getComponents()) {
+			component.setBackground(Color.decode("#DB7E04"));
 		}
 	}
 	public JTextField getTxtNombreCancion() {
